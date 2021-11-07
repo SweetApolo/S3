@@ -60,8 +60,11 @@ namespace S3C
 					case 1:
 
 						string stringText = Console.ReadLine();
+						if (stringText == "exit")
+						{
+							Environment.Exit(0);
+						}
 
-					
 						//Separar los caracteres que se introduzcan
 						string[] bloques = stringText.Split(delimiterChars);
 
@@ -78,6 +81,9 @@ namespace S3C
 						ushort Checksum = uiCrc16Cal(NumerosOP, 9);
 						byte[] checkCheck = BitConverter.GetBytes(Checksum);
 						Todo = NumerosOP.ToList().Concat(checkCheck.ToList()).ToArray();
+
+						
+
 						state = 2;
 						break;
 
